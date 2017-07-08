@@ -6,9 +6,6 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
-	if(message.text=="What the hell is venus") {
-		explainVenus() 
-	}
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -19,11 +16,6 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
-}
-
-function explainVenus() {
-	response = "Oh I'm just this thing Trevor created.\nI can't do shit rn, but my ultimate goal it to be petty.";
-	postMessage(response);
 }
 
 function postMessage() {
