@@ -5,24 +5,14 @@ var botID = process.env.BOT_ID;
 
 function respond() {
 	var message = JSON.parse(this.req.chunks[0]);
-	if(message.text == "Venus, what are you") {
-		explainVenus();
-	}
+	
 	if(message.user_id!="48d4836f205fe8b02e0ec97dd9") {//This is the bot id
     	this.res.writeHead(200);
-    	if(message.text=="Ace, analyze the group."){
-        	analyzeGroup();
-    	}
-    	else if(message.text=="Ace, introduce yourself."){
-      		introduction();
-    	}
-    	else if(message.text.substring(0,12)=="Ace, analyze"){
-      		this.res.writeHead(200);
-      		analyzeMember(message.text.substring(13,message.text.length));
-    	}
+    	if(message.text == "Venus, what are you") {
+			explainVenus();
+		}
   	}
-  this.res.end();
-}
+  	this.res.end();
 }
 
 function explainVenus() {
