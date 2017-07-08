@@ -57,7 +57,7 @@ function respond(){
   //postMessage("Testing.");
   //console.log(message);
     this.res.writeHead(200);
-    if(message.text=="Venus, who are you"){
+    if(message.text=="What is Petty Bot?"){
         introduction();
     }
   this.res.end();
