@@ -58,16 +58,8 @@ function respond(){
   //console.log(message);
     this.res.writeHead(200);
     if(message.text=="Venus, who are you"){
-        analyzeGroup();
+        introduction();
     }
-    else if(message.text=="Ace, introduce yourself."){
-      introduction();
-    }
-    else if(message.text.substring(0,12)=="Ace, analyze"){
-      this.res.writeHead(200);
-      analyzeMember(message.text.substring(13,message.text.length));
-    }
-
   this.res.end();
 }
 
