@@ -4,52 +4,7 @@ var groupID = "31980727";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 
-groupData.on('update',function(outputBool){
-  if(outputBool!=null&&outputBool==true){
-    groupData.emit('output');
-  }
-  else if(outputBool!=null){
-    getAllMessages(outputBool);
-  }
-//  console.log(groupData.data);
-})
 
-groupData.on('output',function(){
-  postMessage(interpretGroupJSON(groupData.data));
-})
-
-var messageData = new EventEmitter();
-messageData.on('update',function(newData,statusCode,memberName){
-  if(statusCode!=304) {
-    console.log("Reading...")
-    //console.log("this is in update");
-    if(messageData.data == null)
-      messageData.data = [];
-    messageData.data.push(newData);
-
-  //  console.log(messageData.data);
-    messageData.emit('repeat',memberName);
-  }
-  else{
-    console.log("Done Reading.");
-    messageData.emit('output',memberName)
-  }
-});
-
-messageData.on('repeat',function(memberName){
-  var latestBatch = messageData.data.pop();
-  console.log("Latest Batch befor JSON Parse:"+latestBatch);
-  var messageBatchJSON = JSON.parse(latestBatch);
-  console.log("Latest Batch after JSON parse: "+messageBatchJSON);
-  messageData.data.push(messageBatchJSON);
-  var messageList = messageBatchJSON.response.messages;
-  var lastMessageID = messageList[messageList.length-1].id;
-//  console.log(lastMessageID);
-   return getAllMessages(memberName,lastMessageID);
-});
-messageData.on('output',function(memberName){
-  outputMemberData(memberName);
-});
 
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
