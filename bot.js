@@ -13,7 +13,7 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
-  postMessage(findGroupID(name, groupData.data));
+  postMessage(findGroupID(groupData.data));
 })
 var messageData = new EventEmitter();
 messageData.on('update',function(newData,statusCode,memberName){
@@ -229,7 +229,7 @@ function getGroupData(){
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/groups/groups?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
@@ -256,9 +256,8 @@ function getGroupData(){
 }
 
 
-function findGroupID(name, groupdata) {
-	console.log("name: " + name);
-	console.log("groupdata: + groupdata);
+function findGroupID(groupdata) {
+	console.log("groupdata:" + groupdata);
 	group = groupdata.response;
 	console.log("group: " + group);
 	for(var i=0; i<group.length; i++) {
