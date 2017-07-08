@@ -13,7 +13,7 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
-  postMessage(interpretGroupJSON(groupData.data));
+  postMessage(findGroupID(name, groupData.data));
 })
 var messageData = new EventEmitter();
 messageData.on('update',function(newData,statusCode,memberName){
@@ -64,6 +64,9 @@ function respond(){
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
       analyzeMember(message.text.substring(13,message.text.length));
+    }
+    else if(message.text == "show groups") {
+    	getGroupData();
     }
   }
   this.res.end();
@@ -222,11 +225,11 @@ function findMemberID(memberName,memberList){
     }
   }
 }
-function getGroupData(outputBool){
+function getGroupData(){
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/'+groupID+'?token=rxtbJYAhwz0NuvMhQPuDczRqMKJpOKoMyXGeWme3',
+    path: '/v3/groups/messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
@@ -240,7 +243,7 @@ function getGroupData(outputBool){
     //    console.info('GET result:\n');
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
-        groupData.emit('update',outputBool);
+        groupData.emit('output'); 
       //  console.info('\n\nCall completed');
       });
   });
@@ -250,6 +253,20 @@ function getGroupData(outputBool){
   getReq.on('error', function(e) {
   console.error(e);
   });
+}
+
+
+function findGroupID(name, groupdata) {
+	console.log("name: " + name);
+	console.log("groupdata: + groupdata);
+	group = groupdata.response;
+	console.log("group: " + group);
+	for(var i=0; i<group.length; i++) {
+		if(group[i].name == "Poker") {
+			return group[i].group_ID;
+		}
+	}
+	return "ERROR";
 }
 
 function analyzeGroup(){
