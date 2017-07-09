@@ -24,7 +24,7 @@ function respond(){
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
-    if(message.text.substring(0, 1) == "@") {
+    if(message.text.substring(0, 5) == "Petty") {
     	console.log("we outchea");
     	console.log(message.text.length);
     	var name = message.text.substring(11, message.text.length);
