@@ -87,7 +87,11 @@ function getMemberId() {
         console.log("userData.data: " + userData.data);
       });
   });
-
+  //some error information, no handling so if theres an error it WILL crash haha.
+  getReq.end();
+  getReq.on('error', function(e) {
+  	console.error(e);
+  });
 }
 
 
