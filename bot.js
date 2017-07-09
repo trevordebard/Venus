@@ -246,10 +246,12 @@ function getGroupData(){
     res.on('data', function(d) {
     //    console.info('GET result:\n');
         
-        console.log("groupdata.data before parse: " + groupdata.data);
+        console.log("groupdata.data before parse: " + groupData.data);
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
-        console.log("about to make the output emit call");
+        console.log("groupdata.data after parse: " + groupData.data);
+		console.log("groupdata.data before parse stringified: " + JSON.stringify(groupData.data));
+
         groupData.emit('output'); 
       //  console.info('\n\nCall completed');
       });
