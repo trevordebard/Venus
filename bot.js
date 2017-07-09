@@ -73,7 +73,7 @@ function showFormerGroups() {
 	console.log("showFormerGroups call");
 	var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/'+groupID+'former?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/users/me'+groupID+'former?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
   var getReq = HTTPS.request(getReqOptions, function(res) {
