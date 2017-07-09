@@ -86,9 +86,11 @@ function getMemberId() {
         console.log("after parse");
         console.log("members: " + JSON.stringify(userData.data.response.members));
         members = userData.data.response.members;
-        if(members.nickname == "Trevor D.") {
-        	console.log("trevor's user id: " + members.user_id)
+        for(var i=0; i < members.length; i++) {
+        	if(members[i].nickname == "Trevor D.") {
+        		console.log("TREVOR ID: " + members[i].user_id);
         	}
+        }
       });
   });
   //some error information, no handling so if theres an error it WILL crash haha.
