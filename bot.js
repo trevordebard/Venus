@@ -65,7 +65,7 @@ function sendDirectMessage(userId, message) {
         json: true
     };
     return new Promise(
-        (resolve, reject) => {
+        (resolve, reject){
             rp(options)
                 .then(function (parsedBody) {
                     resolve();
