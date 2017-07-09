@@ -92,9 +92,6 @@ function getMemberId(name) {
         		console.log(name+ ": " + members[i].user_id);
         		postMessage(name + ": " + members[i].user_id);
         	}
-        	else {
-        		postMessage("no match found");
-        	}
         }
         userData.emit('output');
       });
