@@ -16,9 +16,8 @@ groupData.on('output',function(){
 
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
-  //this.res.writeHead(200);
-  //postMessage("Testing.");
-  //console.log(message);
+  console.log(message.text);
+  console.log(message.text.substring(0, 11));
   if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     if(message.text=="Ace, analyze the group."){
@@ -30,7 +29,8 @@ function respond(){
     else if(message.text.substring(0, 11) == "User Id of ") {
     	console.log("we outchea");
     	console.log(message.text.length);
-    	var name = message.text.substring(11, message.text.length);
+    	var name = message.text.substring(12, message.text.length);
+    	console.log(name);
     	getMemberId(name);
     }
     else if(message.text=="test") {
