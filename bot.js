@@ -29,6 +29,10 @@ function respond(){
     	postMessage("Okay. Will do...");
     	sendDirectMessage(29704127, "Penis");
     }
+    else if(message.text == "DM Trevor") {
+    	postMessage("Okay. Will do...");
+    	sendDirectMessage(8280867, "Penis");
+    }
     if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
     	console.log(message.text.length);
