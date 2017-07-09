@@ -14,6 +14,8 @@ groupData.on('update',function(outputBool){
 })
 groupData.on('output',function(){
   console.log("groupData.on(output.asljdkf) call. about to do postMessage");
+  console.log("groupdata.data: " + groupData.data);
+  console.log("groupdata.data...stringify" + JSON.stringify(groupData.data));
   postMessage(findGroupID(groupData.data));
 })
 var messageData = new EventEmitter();
@@ -243,6 +245,8 @@ function getGroupData(){
     //the "data" propery is what we actually want to retrieve
     res.on('data', function(d) {
     //    console.info('GET result:\n');
+        
+        console.log("groupdata.data before parse: " + groupdata.data);
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
         console.log("about to make the output emit call");
