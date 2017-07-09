@@ -13,6 +13,8 @@ groupData.on('output',function(){
 
 var prevGroupData = new EventEmitter();
 prevGroupData.on('output',function(){
+	console.log("prevGroupData stringify: " + JSON.stringify(prevGroupData));
+	console.log("prevGroupData.data stringify: " + JSON.stringify(prevGroupData.data));
 	postMessage(interpretPrevGroupJSON(prevGroupData.data));
 });
 
@@ -68,6 +70,7 @@ function getGroupData(outputBool){
 }
 
 function showFormerGroups() {
+	console.log("showFormerGroups call");
 	var getReqOptions = {
     hostname: 'api.groupme.com',
     path: '/v3/groups/former?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
@@ -76,6 +79,7 @@ function showFormerGroups() {
   var getReq = HTTPS.request(getReqOptions, function(res) {
   	res.on('data', function(d) { 
   		prevGroupData.data = JSON.parse(d);
+  		console.log("prevGroupData.data stringify: " + JSON.stringify(prevGroupData.data));
   		prevGroupData.emit('output');
   	});
   });
