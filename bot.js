@@ -13,6 +13,7 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
+  console.log("groupData.on(output.asljdkf) call. about to do postMessage");
   postMessage(findGroupID(groupData.data));
 })
 var messageData = new EventEmitter();
@@ -226,6 +227,7 @@ function findMemberID(memberName,memberList){
   }
 }
 function getGroupData(){
+	console.log("getGroupData call");
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
@@ -243,6 +245,7 @@ function getGroupData(){
     //    console.info('GET result:\n');
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
+        console.log("about to make the output emit call");
         groupData.emit('output'); 
       //  console.info('\n\nCall completed');
       });
