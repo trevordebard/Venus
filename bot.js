@@ -26,10 +26,10 @@ function respond(){
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
-    else if(message.text.substring(0, 12) == "User Id of ") {
+    else if(message.text.substring(0, 11) === "User Id of ") {
     	console.log("we outchea");
     	console.log(message.text.length);
-    	var name = message.text.substring(12, message.text.length);
+    	var name = message.text.substring(11, message.text.length);
     	console.log(name);
     	getMemberId(name);
     }
