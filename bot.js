@@ -260,9 +260,10 @@ function getGroupData(){
 
 
 function findGroupID(groupdata) {
-	console.log("groupdata:" + JSON.stringify(groupdata));
 	group = groupdata.response;
 	console.log("group: " + group);
+	console.log("groupdata:" + JSON.stringify(groupdata));
+
 	for(var i=0; i<group.length; i++) {
 		if(group[i].name == "Poker") {
 			return group[i].group_ID;
