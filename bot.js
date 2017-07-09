@@ -101,7 +101,7 @@ function interpretGroupJSON(group){
   console.log("group: " + group);
   group = group.response;
   console.log("group.response: " + group);
-  console.log("stringify: " + JSON.stringify(group));
+  console.log("stringify: " + JSON.stringify(group.members));
   var output = "------Group Analysis------";
   output+="\nGroup ID: "+group.id;
   output+="\nGroup Description: "+group.description;
