@@ -262,7 +262,9 @@ function getGroupData(){
 function findGroupID(groupdata) {
 	group = groupdata.response;
 	console.log("group: " + group);
-	console.log("groupdata:" + JSON.stringify(groupdata));
+	console.log("groupdata...parse: " + JSON.parse(groupdata));
+	console.log("groupdata...Stringify: " + JSON.Stringify(groupdata));
+
 
 	for(var i=0; i<group.length; i++) {
 		if(group[i].name == "Poker") {
