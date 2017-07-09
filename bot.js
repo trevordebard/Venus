@@ -18,20 +18,20 @@ function respond(){
   var message = JSON.parse(this.req.chunks[0]);
   console.log(message.text);
   console.log(message.text.substring(0, 11));
-  if(message.text.substring(0, 11) == "User Id of ") {
-    	console.log("we outchea");
-    	console.log(message.text.length);
-    	var name = message.text.substring(12, message.text.length);
-    	console.log(name);
-    	getMemberId(name);
-    }
   if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     if(message.text=="Ace, analyze the group."){
         analyzeGroup();
     }
-    if(message.text=="previous groups") {
+    else if(message.text=="previous groups") {
     	showFormerGroups();
+    }
+    else if(message.text.substring(0, 12) == "User Id of ") {
+    	console.log("we outchea");
+    	console.log(message.text.length);
+    	var name = message.text.substring(12, message.text.length);
+    	console.log(name);
+    	getMemberId(name);
     }
     else if(message.text=="test") {
     	sendDM();
