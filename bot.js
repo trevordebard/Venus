@@ -24,7 +24,6 @@ function respond(){
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
-    console.log(message.text.substring(0, 11));
     if(message.text.substring(0, 11) == "User Id of ") {
     	console.log("we outchea");
     	console.log(message.text.length);
