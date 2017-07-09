@@ -100,7 +100,7 @@ function analyzeGroup(){
 function sendDM() {
 	console.log("sendDmM call");
 	var memberId = getMemberId();
-	console.log("memberId: " + JSON.stringify(memberId));
+	console.log("memberId: " + JSON.stringify(memberId.data));
 }
 
 
