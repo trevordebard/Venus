@@ -35,7 +35,6 @@ function respond(){
     }
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
-      analyzeMember(message.text.substring(13,message.text.length));
     }
   }
   this.res.end();
