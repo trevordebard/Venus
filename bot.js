@@ -73,6 +73,7 @@ function getGroupData(outputBool){
 }
 
 function getMemberId() {
+  console.log("getMemberID call");
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
@@ -83,6 +84,7 @@ function getMemberId() {
   var getReq = HTTPS.request(getReqOptions, function(res) {
 	    res.on('data', function(d) {
         groupData.data = JSON.parse(d);
+        console.log("groupdata.dat: " + groupData.data);
         return groupData.data;
       });
   });
@@ -96,6 +98,7 @@ function analyzeGroup(){
 }
 
 function sendDM() {
+	console.log("sendDmM call");
 	var memberId = getMemberID();
 	console.log("memberId: " + JSON.stringify(memberId));
 }
