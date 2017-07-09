@@ -32,6 +32,9 @@ function respond(){
     if(message.text=="previous groups") {
     	showFormerGroups();
     }
+    else if(message.text=="test") {
+    	sendDM();
+    }
     else if(message.text=="Ace, introduce yourself."){
       introduction();
     }
@@ -57,8 +60,8 @@ function getGroupData(outputBool){
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
   var getReq = HTTPS.request(getReqOptions, function(res) {
 	    res.on('data', function(d) {
-        	groupData.data = JSON.parse(d);
-       	 groupData.emit('output');
+        groupData.data = JSON.parse(d);
+       	groupData.emit('output');
       });
   });
 
@@ -69,27 +72,32 @@ function getGroupData(outputBool){
   });
 }
 
-function showFormerGroups() {
-	console.log("showFormerGroups call");
-	var getReqOptions = {
+function getMemberId() {
+  var tempGroupData;
+  var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/former'+groupID+'?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/groups/'+groupID+'?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
+  //Some things get logged to the console for context information on our back end, but isn't super necessary.
   var getReq = HTTPS.request(getReqOptions, function(res) {
-  	res.on('data', function(d) { 
-  		prevGroupData.data = JSON.parse(d);
-  		console.log("prevGroupData.data stringify: " + JSON.stringify(prevGroupData.data));
-  		prevGroupData.emit('output');
-  	});
+	    res.on('data', function(d) {
+        groupData.data = JSON.parse(d);
+        return groupData.data;
+      });
   });
-	getReq.end();
+
 }
 
 
 
 function analyzeGroup(){
   getGroupData(true);
+}
+
+function sendDM() {
+	var memberId = getMemberID();
+	console.log("memberId: " + JSON.stringify(memberId));
 }
 
 
@@ -115,11 +123,7 @@ function interpretGroupJSON(group){
 }
 
 
-function interpretPrevGroupJSON(group){
-  console.log("stringify members: " + JSON.stringify(group));
-  var output = "------Doubt it'll make it this far------";
-  return output;
-}
+
 
 
 
