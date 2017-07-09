@@ -4,7 +4,6 @@ var groupID = "32215535";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 var userData = new EventEmitter();
-var uuidV1 = require('uuid/v1');
 
 
 groupData.on('output',function(){
@@ -57,7 +56,7 @@ function sendDirectMessage(userId, message) {
         uri: "https://api.groupme.com/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB",
         body: {
             "direct_message": {
-                "source_guid": uuidV1(),
+                "source_guid": null,
                 "recipient_id": userId,
                 "text": message
             }
