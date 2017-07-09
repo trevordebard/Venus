@@ -15,8 +15,8 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
-  console.log("groupData string: " + JSON.stringify(groupData);
-  console.log("groupData.data string" + JSON.stringify(groupData.data);
+  console.log("groupData string: " + JSON.stringify(groupData));
+  console.log("groupData.data string" + JSON.stringify(groupData.data));
   postMessage(interpretGroupJSON(groupData.data));
 })
 
