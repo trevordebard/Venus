@@ -4,10 +4,10 @@ var groupID = "31980727";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 
-console.log("groupData: " + groupData);
-console.log("groupData stringify: " + JSON.stringify(groupData));
-console.log("groupdata parse: " + JSON.parse(groupData));
-var data = JSON.parse(groupData);
+console.log("groupData: " + groupData.data);
+console.log("groupData stringify: " + JSON.stringify(groupData.data));
+console.log("groupdata parse: " + JSON.parse(groupData.data));
+var data = JSON.parse(groupData.data);
 console.log("groupdata stringify after parse: " + JSON.stringify(data));
 
 groupData.on('update',function(outputBool){
