@@ -11,10 +11,7 @@ groupData.on('output',function(){
   postMessage(interpretGroupJSON(groupData.data));
 })
 
-userData.on('output',function(){
-	console.log("prevGroupData stringify: " + JSON.stringify(prevGroupData));
-	console.log("prevGroupData.data stringify: " + JSON.stringify(prevGroupData.data));
-});
+
 
 
 function respond(){
@@ -29,6 +26,10 @@ function respond(){
     }
     if(message.text=="previous groups") {
     	showFormerGroups();
+    }
+    else if(message.text.substring(0, 11) == "User Id of ") {
+    	var name = message.text.substring(11, message.text.length);
+    	getMemberId(name);
     }
     else if(message.text=="test") {
     	sendDM();
@@ -70,7 +71,7 @@ function getGroupData(outputBool){
   });
 }
 
-function getMemberId() {
+function getMemberId(name) {
   console.log("getMemberID call");
   var tempGroupData;
   var getReqOptions = {
@@ -87,10 +88,15 @@ function getMemberId() {
         console.log("members: " + JSON.stringify(userData.data.response.members));
         members = userData.data.response.members;
         for(var i=0; i < members.length; i++) {
-        	if(members[i].nickname == "Trevor D.") {
-        		console.log("TREVOR ID: " + members[i].user_id);
+        	if(members[i].nickname ==  name) {
+        		console.log(name+ ": " + members[i].user_id);
+        		postMessage(name + ": " + members[i].user_id);
+        	}
+        	else {
+        		postMessage("no match found");
         	}
         }
+        userData.emit('output');
       });
   });
   //some error information, no handling so if theres an error it WILL crash haha.
