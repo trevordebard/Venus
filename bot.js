@@ -260,7 +260,7 @@ function getGroupData(){
 
 
 function findGroupID(groupdata) {
-	console.log("groupdata:" + groupdata);
+	console.log("groupdata:" + JSON.stringify(groupdata));
 	group = groupdata.response;
 	console.log("group: " + group);
 	for(var i=0; i<group.length; i++) {
