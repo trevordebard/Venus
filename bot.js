@@ -106,8 +106,6 @@ function interpretGroupJSON(group){
   output+="\nGroup ID: "+group.id;
   output+="\nGroup Description: "+group.description;
   var creatorID = group.creator_user_id;
-  var creationDate = timeConverter(group.created_at);
-  output+="\nTime Created: "+creationDate;
   output+="\nNumber of messages since creation: "+group.messages.count;
   var avgMessages = calculateAverageMessagePerDay(group.created_at*1000,group.messages.count);//gotta multiply by a thousand bc seconds->millis
   output+="\nAverage number of messages per day: "+avgMessages;
