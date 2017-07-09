@@ -25,7 +25,7 @@ function respond(){
     	showFormerGroups();
     }
     console.log(message.text.substring(0, 11));
-    else if(message.text.substring(0, 11) == "User Id of ") {
+    if(message.text.substring(0, 11) == "User Id of ") {
     	console.log("we outchea");
     	console.log(message.text.length);
     	var name = message.text.substring(11, message.text.length);
