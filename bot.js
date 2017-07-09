@@ -85,7 +85,6 @@ function getMemberId() {
 	    res.on('data', function(d) {
         groupData.data = JSON.parse(d);
         console.log("groupdata.dat: " + groupData.data);
-        return groupData.data;
       });
   });
 
@@ -99,8 +98,7 @@ function analyzeGroup(){
 
 function sendDM() {
 	console.log("sendDmM call");
-	var memberId = getMemberId();
-	console.log("memberId: " + JSON.stringify(memberId.data));
+	getMemberId();
 }
 
 
