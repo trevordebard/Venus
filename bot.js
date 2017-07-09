@@ -81,7 +81,9 @@ function getMemberId() {
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
   var getReq = HTTPS.request(getReqOptions, function(res) {
 	    res.on('data', function(d) {
+	    console.log('before parse');
         userData.data = JSON.parse(d);
+        console.log("after parse");
         console.log("userData.data: " + userData.data);
       });
   });
