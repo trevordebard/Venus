@@ -3,7 +3,7 @@ var botID = process.env.BOT_ID;
 var groupID = "32215535";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
-
+var userData = new EventEmitter();
 
 groupData.on('output',function(){
   console.log("groupData string: " + JSON.stringify(groupData));
@@ -11,11 +11,9 @@ groupData.on('output',function(){
   postMessage(interpretGroupJSON(groupData.data));
 })
 
-var prevGroupData = new EventEmitter();
-prevGroupData.on('output',function(){
+userData.on('output',function(){
 	console.log("prevGroupData stringify: " + JSON.stringify(prevGroupData));
 	console.log("prevGroupData.data stringify: " + JSON.stringify(prevGroupData.data));
-	postMessage(interpretPrevGroupJSON(prevGroupData.data));
 });
 
 
@@ -83,8 +81,8 @@ function getMemberId() {
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
   var getReq = HTTPS.request(getReqOptions, function(res) {
 	    res.on('data', function(d) {
-        groupData.data = JSON.parse(d);
-        console.log("groupdata.dat: " + groupData.data);
+        userData.data = JSON.parse(d);
+        console.log("userData.data: " + userData.data);
       });
   });
 
