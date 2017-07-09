@@ -84,7 +84,7 @@ function getMemberId() {
 	    console.log('before parse');
         userData.data = JSON.parse(d);
         console.log("after parse");
-        console.log("userData.data: " + JSON.stringify(userData.data));
+        console.log("members: " + JSON.stringify(userData.data.response.members));
       });
   });
   //some error information, no handling so if theres an error it WILL crash haha.
