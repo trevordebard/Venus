@@ -13,10 +13,7 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
-  console.log("groupData.on(output.asljdkf) call. about to do postMessage");
-  console.log("groupdata.data: " + groupData.data);
-  console.log("groupdata.data...stringify" + JSON.stringify(groupData.data));
-  postMessage(findGroupID(groupData.data));
+  postMessage(interpretGroupJSON(groupData.data));
 })
 var messageData = new EventEmitter();
 messageData.on('update',function(newData,statusCode,memberName){
@@ -67,9 +64,6 @@ function respond(){
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
       analyzeMember(message.text.substring(13,message.text.length));
-    }
-    else if(message.text == "show groups") {
-    	getGroupData();
     }
   }
   this.res.end();
@@ -228,12 +222,11 @@ function findMemberID(memberName,memberList){
     }
   }
 }
-function getGroupData(){
-	console.log("getGroupData call");
+function getGroupData(outputBool){
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/groups/'+groupID+'?token=rxtbJYAhwz0NuvMhQPuDczRqMKJpOKoMyXGeWme3',
     method: 'GET'
   }
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
@@ -245,14 +238,9 @@ function getGroupData(){
     //the "data" propery is what we actually want to retrieve
     res.on('data', function(d) {
     //    console.info('GET result:\n');
-        
-        console.log("groupdata.data before parse: " + groupData.data);
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
-        console.log("groupdata.data after parse: " + groupData.data);
-		console.log("groupdata.data before parse stringified: " + JSON.stringify(groupData.data));
-
-        groupData.emit('output'); 
+        groupData.emit('update',outputBool);
       //  console.info('\n\nCall completed');
       });
   });
@@ -262,22 +250,6 @@ function getGroupData(){
   getReq.on('error', function(e) {
   console.error(e);
   });
-}
-
-
-function findGroupID(groupdata) {
-	console.log("groupdata...stringify: " + JSON.stringify(groupdata));
-	group = groupdata.response;
-	console.log("group: " + group);
-	//console.log("groupdata...parse: " + JSON.parse(groupdata));
-
-
-	for(var i=0; i<group.length; i++) {
-		if(group[i].name == "Poker") {
-			return group[i].group_ID;
-		}
-	}
-	return "ERROR";
 }
 
 function analyzeGroup(){
