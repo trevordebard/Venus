@@ -11,22 +11,9 @@ groupData.on('output',function(){
   postMessage(interpretGroupJSON(groupData.data));
 })
 
-var messageData = new EventEmitter();
-messageData.on('update',function(newData,statusCode,memberName){
-  if(statusCode!=304) {
-    console.log("Reading...")
-    //console.log("this is in update");
-    if(messageData.data == null)
-      messageData.data = [];
-    messageData.data.push(newData);
-
-  //  console.log(messageData.data);
-    messageData.emit('repeat',memberName);
-  }
-  else{
-    console.log("Done Reading.");
-    messageData.emit('output',memberName)
-  }
+var prevGroupData = new EventEmitter();
+prevGroupData.on('output',function(){
+	postMessage(interpretPrevGroupJSON(prevGroupData.data));
 });
 
 
@@ -39,6 +26,9 @@ function respond(){
     this.res.writeHead(200);
     if(message.text=="Ace, analyze the group."){
         analyzeGroup();
+    }
+    if(message.text=="previous groups") {
+    	showFormerGroups();
     }
     else if(message.text=="Ace, introduce yourself."){
       introduction();
@@ -60,35 +50,45 @@ function getGroupData(outputBool){
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups/'+groupID+'?token=rxtbJYAhwz0NuvMhQPuDczRqMKJpOKoMyXGeWme3',
+    path: '/v3/groups/'+groupID+'?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
   var getReq = HTTPS.request(getReqOptions, function(res) {
-  //  console.log("statusCode: ", res.statusCode);//Request status
-  //  console.log("headers: ", res.headers);//header info on the request, not 100% sure what all this is, but why not keep it
-
-
-    //the "data" propery is what we actually want to retrieve
-    res.on('data', function(d) {
-    //    console.info('GET result:\n');
-        //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
-        groupData.data = JSON.parse(d);
-        groupData.emit('output');
-      //  console.info('\n\nCall completed');
+	    res.on('data', function(d) {
+        	groupData.data = JSON.parse(d);
+       	 groupData.emit('output');
       });
   });
 
   //some error information, no handling so if theres an error it WILL crash haha.
   getReq.end();
   getReq.on('error', function(e) {
-  console.error(e);
+  	console.error(e);
   });
 }
+
+function showFormerGroups() {
+	var getReqOptions = {
+    hostname: 'api.groupme.com',
+    path: '/v3/groups/former?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    method: 'GET'
+  }
+  var getReq = HTTPS.request(getReqOptions, function(res) {
+  	res.on('data', function(d) { 
+  		prevGroupData.data = JSON.parse(d);
+  		prevGroupData.emit('output');
+  	});
+  });
+	getReq.end();
+}
+
+
 
 function analyzeGroup(){
   getGroupData(true);
 }
+
 
 function interpretGroupJSON(group){
   console.log("group: " + group);
@@ -108,9 +108,16 @@ function interpretGroupJSON(group){
       output+="\n"+memberList[i].image_url;
     }
   }
-
   return output;
 }
+
+
+function interpretPrevGroupJSON(group){
+  console.log("stringify members: " + JSON.stringify(group));
+  var output = "------Doubt it'll make it this far------";
+  return output;
+}
+
 
 
 function postMessage(botResponse) {
