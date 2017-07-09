@@ -15,6 +15,8 @@ groupData.on('update',function(outputBool){
 //  console.log(groupData.data);
 })
 groupData.on('output',function(){
+  console.log("groupData string: " + JSON.stringify(groupData);
+  console.log("groupData.data string" + JSON.stringify(groupData.data);
   postMessage(interpretGroupJSON(groupData.data));
 })
 
@@ -101,7 +103,7 @@ function interpretGroupJSON(group){
   console.log("group: " + group);
   group = group.response;
   console.log("group.response: " + group);
-  console.log("stringify: " + JSON.stringify(group.members));
+  console.log("stringify members: " + JSON.stringify(group.members));
   var output = "------Group Analysis------";
   output+="\nGroup ID: "+group.id;
   output+="\nGroup Description: "+group.description;
