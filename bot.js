@@ -4,6 +4,8 @@ var groupID = "32215535";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 var userData = new EventEmitter();
+var uuidV1 = require('uuid/v1');
+
 
 groupData.on('output',function(){
   console.log("groupData string: " + JSON.stringify(groupData));
@@ -24,6 +26,10 @@ function respond(){
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
+    else if(message.text == "DM Tristan") {
+    	postMessage("Okay. Will do...");
+    	sendDirectMessage(29704127, "Penis");
+    }
     if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
     	console.log(message.text.length);
@@ -43,6 +49,35 @@ function respond(){
   }
   this.res.end();
 }
+
+
+function sendDirectMessage(userId, message) {
+    const options = {
+        method: "POST",
+        uri: "https://api.groupme.com/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB",
+        body: {
+            "direct_message": {
+                "source_guid": uuidV1(),
+                "recipient_id": userId,
+                "text": message
+            }
+        },
+        json: true
+    };
+    return new Promise(
+        (resolve, reject) => {
+            rp(options)
+                .then(function (parsedBody) {
+                    resolve();
+                })
+                .catch(function (err) {
+                    reject(err);
+                });
+        }
+    );
+};
+
+
 
 function introduction(){
   var response = "Hi, I'm the analytical chat engine, or ACE.\nI don't have very much functionality at the moment, but I can give very basic stats about this group.";
