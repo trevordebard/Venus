@@ -233,7 +233,7 @@ function getGroupData(){
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
-    path: '/v3/groups?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/groups/?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'GET'
   }
   //Some things get logged to the console for context information on our back end, but isn't super necessary.
