@@ -1,6 +1,6 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
-var groupID = "31980727";
+var groupID = "32215535";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 
