@@ -27,7 +27,7 @@ function respond(){
     if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
     	console.log(message.text.length);
-    	var name = message.text.substring(7, message.text.length);
+    	var name = message.text.substring(8, message.text.length);
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
