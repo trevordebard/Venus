@@ -5,15 +5,6 @@ var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 
 
-groupData.on('update',function(outputBool){
-  if(outputBool!=null&&outputBool==true){
-    groupData.emit('output');
-  }
-  else if(outputBool!=null){
-    getAllMessages(outputBool);
-  }
-//  console.log(groupData.data);
-})
 groupData.on('output',function(){
   console.log("groupData string: " + JSON.stringify(groupData));
   console.log("groupData.data string" + JSON.stringify(groupData.data));
@@ -83,7 +74,7 @@ function getGroupData(outputBool){
     //    console.info('GET result:\n');
         //It comes in as JSON and so it has to get passed to the function that parses it, and then passed into postMessage to send to group
         groupData.data = JSON.parse(d);
-        groupData.emit('update',outputBool);
+        groupData.emit('output');
       //  console.info('\n\nCall completed');
       });
   });
