@@ -4,11 +4,6 @@ var groupID = "31980727";
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 
-console.log("groupData: " + groupData.data);
-console.log("groupData stringify: " + JSON.stringify(groupData.data));
-console.log("groupdata parse: " + JSON.parse(groupData.data));
-var data = JSON.parse(groupData.data);
-console.log("groupdata stringify after parse: " + JSON.stringify(data));
 
 groupData.on('update',function(outputBool){
   if(outputBool!=null&&outputBool==true){
@@ -265,7 +260,10 @@ function analyzeGroup(){
 }
 
 function interpretGroupJSON(group){
+	console.log("group: " + group);
   group = group.response;
+  console.log("group.response: " + group);
+  console.log("stringify: " + JSON.stringify(group));
   var output = "------Group Analysis------";
   output+="\nGroup ID: "+group.id;
   output+="\nGroup Description: "+group.description;
