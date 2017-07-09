@@ -28,6 +28,8 @@ function respond(){
     	showFormerGroups();
     }
     else if(message.text.substring(0, 11) == "User Id of ") {
+    	console.log("we outchea");
+    	console.log(message.text.length);
     	var name = message.text.substring(11, message.text.length);
     	getMemberId(name);
     }
