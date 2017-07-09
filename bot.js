@@ -24,7 +24,7 @@ function respond(){
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
-    if(message.text.substring(0, 11) == "User Id of ") {
+    if(message.text.substring(0, 10) == "User Id of") {
     	console.log("we outchea");
     	console.log(message.text.length);
     	var name = message.text.substring(11, message.text.length);
