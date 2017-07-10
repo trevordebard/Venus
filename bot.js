@@ -55,7 +55,7 @@ function respond(){
   this.res.end();
 }
 
-
+/*
 function sendDirectMessage(userId, message) {
   var options, body, botReq;
 
@@ -88,7 +88,7 @@ function sendDirectMessage(userId, message) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
-}
+}*/
 
 
 function introduction(){
