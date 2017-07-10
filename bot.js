@@ -166,6 +166,7 @@ function sendDirectMessage(userId, message) {
       }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
+        console.log("STRINGIFY: " + JSON.stringify(res));
       }
 
   });
