@@ -55,41 +55,6 @@ function respond(){
   this.res.end();
 }
 
-/*
-function sendDirectMessage(userId, message) {
-  var options, body, botReq;
-
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/direct_messages',
-    method: 'POST'
-  };
-
-  body = {
-    "source_guid": "sdklflsdsdlfjslkjfl",
-    "recipient_id": userID,
-    "text": message"
-  };
-
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      }
-      else{
-        console.log('rejecting bad status code ' + res.statusCode);
-      }
-
-  });
-
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
-  botReq.end(JSON.stringify(body));
-}*/
-
 
 function introduction(){
   var response = "Hi, I'm the analytical chat engine, or ACE.\nI don't have very much functionality at the moment, but I can give very basic stats about this group.";
@@ -180,6 +145,39 @@ function interpretGroupJSON(group){
 }
 
 
+function sendDirectMessage(userId, message) {
+  var options, body, botReq;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/direct_messages',
+    method: 'POST'
+  };
+
+  body = {
+    "source_guid": "sdklflsdsdlfjslkjfl",
+    "recipient_id": userID,
+    "text": message
+  };
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      }
+      else{
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
 
 function postMessage(botResponse) {
   var options, body, botReq;
