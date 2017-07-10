@@ -88,8 +88,7 @@ function sendDirectMessage(userId, message) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
-
-};
+}
 
 
 function introduction(){
