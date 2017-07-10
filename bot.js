@@ -60,7 +60,7 @@ function sendDirectMessage(userId, message) {
         uri: "https://api.groupme.com/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB",
         body: {
             "direct_message": {
-                "source_guid": null,
+                "source_guid": 23982839283492839,
                 "recipient_id": userId,
                 "text": message
             }
