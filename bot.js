@@ -81,6 +81,7 @@ function sendDirectMessage(userId, message) {
       }
 
   });
+}
 
   botReq.on('error', function(err) {
     console.log('error posting message '  + JSON.stringify(err));
