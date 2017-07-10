@@ -35,7 +35,7 @@ function respond(){
     	postMessage("Okay. Will do...");
     	sendDirectMessage(8280867, "Penis");
     }
-    if(message.text.substring(0, 7) == "User_Id") {
+    else if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
     	console.log(message.text.length);
     	var name = message.text.substring(8, message.text.length);
@@ -68,9 +68,8 @@ function sendDirectMessage(userId, message) {
   body = {
     "source_guid": "sdklflsdsdlfjslkjfl",
     "recipient_id": userID,
-    "text": message",
+    "text": message"
   };
-
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
