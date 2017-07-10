@@ -25,15 +25,15 @@ function respond(){
     }
     else if(message.text == "DM Tristan") {
     	postMessage("Okay. Will do...");
-    	sendDirectMessage(29704127, "Penis");
+    	sendDirectMessage("29704127", "Penis");
     }
     else if(message.text == "DM Dorothy") {
     	postMessage("Okay. Will do...");
-    	sendDirectMessage(29326293, "Penis");
+    	sendDirectMessage("29326293", "Penis");
     }
     else if(message.text == "DM Trevor") {
     	postMessage("Okay. Will do...");
-    	sendDirectMessage(8280867, "Penis");
+    	sendDirectMessage("8280867", "Penis");
     }
     else if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
@@ -166,9 +166,7 @@ function sendDirectMessage(userId, message) {
       }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
-        console.log("STRINGIFY: " + JSON.stringify(res));
       }
-
   });
 
   botReq.on('error', function(err) {
