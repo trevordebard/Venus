@@ -80,7 +80,6 @@ function sendDirectMessage(userId, message) {
       }
 
   });
-}
 
   botReq.on('error', function(err) {
     console.log('error posting message '  + JSON.stringify(err));
@@ -91,7 +90,6 @@ function sendDirectMessage(userId, message) {
   botReq.end(JSON.stringify(body));
 
 };
-
 
 
 function introduction(){
