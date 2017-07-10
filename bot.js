@@ -29,6 +29,10 @@ function respond(){
     	postMessage("Okay. Will do...");
     	sendDirectMessage(29704127, "Penis");
     }
+    else if(message.text == "DM Dorothy") {
+    	postMessage("Okay. Will do...");
+    	sendDirectMessage(29326293, "Penis");
+    }
     else if(message.text == "DM Trevor") {
     	postMessage("Okay. Will do...");
     	sendDirectMessage(8280867, "Penis");
@@ -55,18 +59,39 @@ function respond(){
 
 
 function sendDirectMessage(userId, message) {
-    const options = {
-        method: "POST",
-        uri: "https://api.groupme.com/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB",
-        body: {
-            "direct_message": {
-                "source_guid": 23982839283492839,
-                "recipient_id": userId,
-                "text": message
-            }
-        },
-        json: true
-    };
+  var options, body, botReq;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    method: 'POST'
+  };
+
+  body = {
+    "source_guid": "sdklflsdsdlfjslkjfl",
+    "recipient_id": userID,
+    "text": message",
+  };
+
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      }
+      else{
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+
 };
 
 
