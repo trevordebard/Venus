@@ -155,7 +155,7 @@ function sendDirectMessage(userId, message) {
   };
 
   body = {
-    "source_guid": "sdklflsdsdlfjslkjfl",
+    "source_guid": "93284938405983049850389030948272",
     "recipient_id": userId,
     "text": message
   };
