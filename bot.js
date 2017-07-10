@@ -156,7 +156,7 @@ function sendDirectMessage(userId, message) {
 
   body = {
     "source_guid": "sdklflsdsdlfjslkjfl",
-    "recipient_id": userID,
+    "recipient_id": userId,
     "text": message
   };
 
