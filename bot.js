@@ -202,6 +202,7 @@ function postMessage(botResponse) {
       }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
+        botReq.emit(error);
       }
 
   });
