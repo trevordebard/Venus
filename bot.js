@@ -154,10 +154,11 @@ function sendDirectMessage(userId, message) {
     method: 'POST'
   };
 
-  direct_message = {
+  body = { "direct_message": {
     "source_guid": "5257bdd049240135837b22000b9ea932",
     "recipient_id": userId,
     "text": message
+  }
   };
 
   botReq = HTTPS.request(options, function(res) {
