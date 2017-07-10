@@ -13,8 +13,6 @@ groupData.on('output',function(){
 })
 
 
-
-
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
   if(message.user_id!="402936"){//This is the bot id
@@ -63,7 +61,7 @@ function sendDirectMessage(userId, message) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/direct_messages',
     method: 'POST'
   };
 
@@ -161,10 +159,6 @@ function analyzeGroup(){
   getGroupData(true);
 }
 
-function sendDM() {
-	console.log("sendDmM call");
-	getMemberId();
-}
 
 
 function interpretGroupJSON(group){
@@ -187,9 +181,6 @@ function interpretGroupJSON(group){
   }
   return output;
 }
-
-
-
 
 
 
