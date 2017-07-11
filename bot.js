@@ -33,6 +33,9 @@ function respond(){
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
     }
+    if(message.name == "Trevor D.") {
+    	postMessage("I detect Trevor sent that.");
+    }
   }
 
   this.res.end();
