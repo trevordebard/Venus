@@ -39,15 +39,11 @@ function respond(){
   }
   if(message.user_id == trevorID) {
   	postMessage("I detect trevor sent that.");
-  }}
+  }
   this.res.end();
 }
 
 
-function introduction(){
-  var response = "Hi, I'm the analytical chat engine, or ACE.\nI don't have very much functionality at the moment, but I can give very basic stats about this group.";
-  postMessage(response);
-}
 
 function getGroupData(outputBool){
   var tempGroupData;
