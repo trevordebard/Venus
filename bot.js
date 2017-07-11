@@ -167,6 +167,8 @@ function sendDirectMessage(userId, message) {
       if(res.statusCode == "400") {
       	console.log("error? : " + res.StatusCode);
       	 console.log("error? ALSKJDF: " + res.data);
+      	 console.log('rejecting bad status code ' + res.statusCode);
+        console.log('MESSAGE: ' + (res.statusMessage));
 
       }
       else{
