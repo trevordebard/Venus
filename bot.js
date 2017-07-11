@@ -118,6 +118,7 @@ function returnMemberId(name) {
         		console.log(name+ ": " + members[i].user_id);
         		postMessage(name + ": " + members[i].user_id);
         		id = members[i].user_id;
+        		return id;
         	}
         }
         userData.emit('output');
@@ -128,7 +129,6 @@ function returnMemberId(name) {
   getReq.on('error', function(e) {
   	console.error(e);
   });
-  return id;
 }
 
 
