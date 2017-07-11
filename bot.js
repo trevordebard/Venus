@@ -169,7 +169,7 @@ function sendDirectMessage(userId, message) {
       	 console.log("error? ALSKJDF: " + res.data);
       	 console.log('rejecting bad status code ' + res.statusCode);
         console.log('MESSAGE: ' + (res.statusMessage));
-        console.log("MAYBEE??: " + res);
+        console.log("MAYBEE??: " + res.getHeaders());
 
       }
       else{
