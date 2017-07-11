@@ -33,6 +33,9 @@ function respond(){
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
+    else if(message.text.toLowerCase() == "gort status") {
+    	showStatus();
+    }
     if(message.name == "Memeville") {
     	spongify(message.text);
     }
@@ -61,6 +64,23 @@ function spongify(string) {
 	}
 	postMessage(output);
 }
+
+function showStatus() {
+	var output = "GORT v0.999a"
+	+ "Info: http://botsol.net/gort_sucks"
+	+ "Group ID: 27053863, 2647/5000 users"
+	+ "Owner: Mr. Magorium (very debatable)"
+	+ "Admins: useless"
+	+ "0 Trusted, All Pleb users
+	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2"
+	+ "Sec level: overthrown"
+	+ "Restricted: Name Topic Avatar Omode Kick"
+	+ "Allowed: Join Rejoin Add Chat Others"
+	+ "Extras: Antibot...LMAOOOOOO"
+	+ "Now: the past's future";
+	postMessage(output);
+}
+
 function getGroupData(outputBool){
   var tempGroupData;
   var getReqOptions = {
