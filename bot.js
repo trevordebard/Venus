@@ -15,6 +15,7 @@ groupData.on('output',function(){
 
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
+    console.log(JSON.stringify(message));
   if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     if(message.text=="Ace, analyze the group."){
