@@ -5,6 +5,7 @@ var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 var userData = new EventEmitter();
 
+var trevorID = returnMemberId("Trevor D.");
 
 groupData.on('output',function(){
   console.log("groupData string: " + JSON.stringify(groupData));
@@ -15,7 +16,7 @@ groupData.on('output',function(){
 
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
-  	if(message.user_id!="402936"){//This is the bot id
+  if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     
     if(message.text=="simple") {
@@ -32,6 +33,9 @@ function respond(){
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
     }
+  }
+  if(message.user_id == trevorID) {
+  	postMessage("I think trevor sent that");
   }
   this.res.end();
 }
@@ -90,6 +94,40 @@ function getMemberId(name) {
   getReq.on('error', function(e) {
   	console.error(e);
   });
+}
+
+function returnMemberId(name) {
+  console.log("getMemberID call");
+  var tempGroupData;
+  var getReqOptions = {
+    hostname: 'api.groupme.com',
+    path: '/v3/groups/'+groupID+'?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    method: 'GET'
+  }
+  //Some things get logged to the console for context information on our back end, but isn't super necessary.
+  var getReq = HTTPS.request(getReqOptions, function(res) {
+	    res.on('data', function(d) {
+	    console.log('before parse');
+        userData.data = JSON.parse(d);
+        console.log("after parse");
+        console.log("members: " + JSON.stringify(userData.data.response.members));
+        members = userData.data.response.members;
+        for(var i=0; i < members.length; i++) {
+        	if(members[i].nickname ==  name) {
+        		console.log(name+ ": " + members[i].user_id);
+        		postMessage(name + ": " + members[i].user_id);
+        		var id = members[i].user_id;
+        	}
+        }
+        userData.emit('output');
+      });
+  });
+  //some error information, no handling so if theres an error it WILL crash haha.
+  getReq.end();
+  getReq.on('error', function(e) {
+  	console.error(e);
+  });
+  return id;
 }
 
 
