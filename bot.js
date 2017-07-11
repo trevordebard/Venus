@@ -43,7 +43,7 @@ function respond(){
 
 
 function spongify(string) {
-	for(int i = 0; i < string.length; i++) {
+	for(var i = 0; i < string.length; i++) {
 		if(i % 2 == 0){
 			string.charAt(i).toUpperCase();
 		}
