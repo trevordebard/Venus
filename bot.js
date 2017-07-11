@@ -34,7 +34,7 @@ function respond(){
       this.res.writeHead(200);
     }
     if(message.name == "Trevor D.") {
-    	postMessage("I detect Trevor sent that.");
+    	spongify(message.text);
     }
   }
 
@@ -42,7 +42,17 @@ function respond(){
 }
 
 
-
+function spongify(string) {
+	for(int i = 0; i < string.length; i++) {
+		if(i % 2 == 0){
+			string.charAt(i).toUpperCase();
+		}
+		else {
+			string.charAt(i).toLowerCase();
+		}
+	}
+	postMessage(string);
+}
 function getGroupData(outputBool){
   var tempGroupData;
   var getReqOptions = {
