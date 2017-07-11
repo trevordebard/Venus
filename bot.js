@@ -66,18 +66,18 @@ function spongify(string) {
 }
 
 function showStatus() {
-	var output = "GORT v0.999a"
-	+ "Info: http://botsol.net/gort_sucks"
-	+ "Group ID: 27053863, 2647/5000 users"
-	+ "Owner: Mr. Magorium (very debatable)"
-	+ "Admins: useless"
-	+ "0 Trusted, All Pleb users"
-	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2"
+	var output = "GORT v0.999a\n"
+	+ "Info: http://botsol.net/gort_sucks\n"
+	+ "Group ID: 27053863, 2647/5000 users\n"
+	+ "Owner: Mr. Magorium (very debatable)\n"
+	+ "Admins: useless\n"
+	+ "0 Trusted, All Pleb users\n"
+	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2"\n
 	+ "Sec level: overthrown"
-	+ "Restricted: Name Topic Avatar Omode Kick"
-	+ "Allowed: Join Rejoin Add Chat Others"
-	+ "Extras: Antibot...LMAOOOOOO"
-	+ "Now: the past's future";
+	+ "Restricted: Name Topic Avatar Omode Kick\n"
+	+ "Allowed: Join Rejoin Add Chat Others\n"
+	+ "Extras: Antibot...LMAOOOOOO\n"
+	+ "Now: the past's future\n";
 	postMessage(output);
 }
 
