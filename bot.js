@@ -98,6 +98,7 @@ function getMemberId(name) {
 
 function returnMemberId(name) {
   console.log("getMemberID call");
+  var id;
   var tempGroupData;
   var getReqOptions = {
     hostname: 'api.groupme.com',
@@ -116,7 +117,7 @@ function returnMemberId(name) {
         	if(members[i].nickname ==  name) {
         		console.log(name+ ": " + members[i].user_id);
         		postMessage(name + ": " + members[i].user_id);
-        		var id = members[i].user_id;
+        		id = members[i].user_id;
         	}
         }
         userData.emit('output');
