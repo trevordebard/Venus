@@ -43,15 +43,16 @@ function respond(){
 
 
 function spongify(string) {
+	var output = "";
 	for(var i = 0; i < string.length; i++) {
-		if(i % 2 == 0){
-			string.charAt(i).toUpperCase();
-		}
-		else {
-			string.charAt(i).toLowerCase();
-		}
+		if (i % 2 != 0) {
+            output += string[i].toUpperCase();
+        }
+        else {
+            output += string[i].toLowerCase();
+         }   
 	}
-	postMessage(string);
+	postMessage(output);
 }
 function getGroupData(outputBool){
   var tempGroupData;
