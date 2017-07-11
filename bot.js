@@ -25,6 +25,9 @@ function respond(){
     if(message.text=="Ace, analyze the group."){
         analyzeGroup();
     }
+    if(message.text=="simple") {
+    	postMessage("it worked");
+    }
     else if(message.text=="previous groups") {
     	showFormerGroups();
     }
