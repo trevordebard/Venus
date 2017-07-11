@@ -72,7 +72,7 @@ function showStatus() {
 	+ "Owner: Mr. Magorium (very debatable)\n"
 	+ "Admins: useless\n"
 	+ "0 Trusted, All Pleb users\n"
-	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2"\n
+	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2\n"
 	+ "Sec level: overthrown"
 	+ "Restricted: Name Topic Avatar Omode Kick\n"
 	+ "Allowed: Join Rejoin Add Chat Others\n"
