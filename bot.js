@@ -150,7 +150,7 @@ function sendDirectMessage(userId, message) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/direct_messages',
+    path: '/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
     method: 'POST'
   };
 
