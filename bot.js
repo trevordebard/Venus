@@ -71,7 +71,7 @@ function showStatus() {
 	+ "Group ID: 27053863, 2647/5000 users"
 	+ "Owner: Mr. Magorium (very debatable)"
 	+ "Admins: useless"
-	+ "0 Trusted, All Pleb users
+	+ "0 Trusted, All Pleb users"
 	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2"
 	+ "Sec level: overthrown"
 	+ "Restricted: Name Topic Avatar Omode Kick"
