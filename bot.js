@@ -22,6 +22,9 @@ function respond(){
     if(message.text=="simple") {
     	postMessage("it worked");
     }
+    else if(message.text.substring(0,9).toLowerCase() == "less talk") {
+    	postMessage("I will talk as much as I want");
+    }
     
     else if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
@@ -30,12 +33,16 @@ function respond(){
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
-    else if(message.text.substring(0,12)=="Ace, analyze"){
-      this.res.writeHead(200);
-    }
-    if(message.name == "Trevor D.") {
+    if(message.name == "Memeville") {
     	spongify(message.text);
     }
+    if(message.name == 'Mantequilla "Last of the Memecans"') {
+    	spongify(message.text);
+    }
+    if(message.name == "Sean Spicer") {
+    	spongify(message.text);
+    }
+    
   }
 
   this.res.end();
