@@ -19,6 +19,7 @@ function respond(){
     if(message.attachments.type == "image")
     {
     	postMessage("image");
+    	}
   if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     if(message.text=="Ace, analyze the group."){
