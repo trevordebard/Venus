@@ -1,10 +1,11 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
-var groupID = "32215535";
+var groupID = "32215535"; //venus dev
 var EventEmitter = require("events").EventEmitter;
 var groupData = new EventEmitter();
 var userData = new EventEmitter();
 
+var trevorID = returnMemberID("Trevor D.");
 
 groupData.on('output',function(){
   console.log("groupData string: " + JSON.stringify(groupData));
@@ -15,34 +16,16 @@ groupData.on('output',function(){
 
 function respond(){
   var message = JSON.parse(this.req.chunks[0]);
-    console.log(JSON.stringify(message));
-    if(message.attachments.type == "image")
-    {
-    	postMessage("image");
-    	}
-  if(message.user_id!="402936"){//This is the bot id
+  	if(message.user_id!="402936") {//This is the bot id
     this.res.writeHead(200);
+    
     if(message.text=="Ace, analyze the group."){
         analyzeGroup();
     }
     if(message.text=="simple") {
     	postMessage("it worked");
     }
-    else if(message.text=="previous groups") {
-    	showFormerGroups();
-    }
-    else if(message.text == "DM Tristan") {
-    	postMessage("Okay. Will do...");
-    	sendDirectMessage("29704127", "Penis");
-    }
-    else if(message.text == "DM Dorothy") {
-    	postMessage("Okay. Will do...");
-    	sendDirectMessage("29326293", "Penis");
-    }
-    else if(message.text == "DM Trevor") {
-    	postMessage("Okay. Will do...");
-    	sendDirectMessage("8280867", "Penis");
-    }
+    
     else if(message.text.substring(0, 7) == "User_Id") {
     	console.log("we outchea");
     	console.log(message.text.length);
@@ -50,16 +33,13 @@ function respond(){
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
-    else if(message.text=="test") {
-    	sendDM();
-    }
-    else if(message.text=="Ace, introduce yourself."){
-      introduction();
-    }
     else if(message.text.substring(0,12)=="Ace, analyze"){
       this.res.writeHead(200);
     }
   }
+  if(message.user_id == trevorID) {
+  	postMessage("I detect trevor sent that.");
+  }}
   this.res.end();
 }
 
@@ -123,10 +103,36 @@ function getMemberId(name) {
   });
 }
 
-
-
-function analyzeGroup(){
-  getGroupData(true);
+function returnMemberId(name) {
+  console.log("getMemberID call");
+  var tempGroupData;
+  var getReqOptions = {
+    hostname: 'api.groupme.com',
+    path: '/v3/groups/'+groupID+'?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    method: 'GET'
+  }
+  //Some things get logged to the console for context information on our back end, but isn't super necessary.
+  var getReq = HTTPS.request(getReqOptions, function(res) {
+	    res.on('data', function(d) {
+	    console.log('before parse');
+        userData.data = JSON.parse(d);
+        console.log("after parse");
+        console.log("members: " + JSON.stringify(userData.data.response.members));
+        members = userData.data.response.members;
+        for(var i=0; i < members.length; i++) {
+        	if(members[i].nickname ==  name) {
+        		console.log(name+ ": " + members[i].user_id);
+        		return members[i].user_id;
+        	}
+        }
+        userData.emit('output');
+      });
+  });
+  //some error information, no handling so if theres an error it WILL crash haha.
+  getReq.end();
+  getReq.on('error', function(e) {
+  	console.error(e);
+  });
 }
 
 
@@ -152,41 +158,6 @@ function interpretGroupJSON(group){
   return output;
 }
 
-
-function sendDirectMessage(userId, message) {
-  var options, body, botReq;
-
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
-    method: 'POST'
-  };
-
-  body = { 
-  	"direct_messages": [
-  	{
-    	"source_guid": "GUID-1",
-    	"recipient_id": userId,
-   		"text": "penis"
-   	}]
-  };
-
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      }
-    
-      else{
-        console.log('rejecting bad status code ' + res.statusCode);
-        console.log('MESSAGE: ' + (res.statusMessage));
-
-      }
-  });
-
-  console.log("BODY: " + JSON.stringify(body));
-  botReq.end(JSON.stringify(body));
-  console.log(botReq);
-}
 
 function postMessage(botResponse) {
   var options, body, botReq;
