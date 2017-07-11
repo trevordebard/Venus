@@ -34,9 +34,7 @@ function respond(){
       this.res.writeHead(200);
     }
   }
-  if(message.user_id == trevorID) {
-  	postMessage("I think trevor sent that");
-  }
+
   this.res.end();
 }
 
