@@ -150,28 +150,24 @@ function sendDirectMessage(userId, message) {
 
   options = {
     hostname: 'api.groupme.com',
-    path: '/v3/direct_messages?token=UY5lfCVqEPlpQhge4UlydU6e6iQojUfmFPNCr2yB',
+    path: '/v3/direct_messages',
     method: 'POST'
   };
 
-  	body = { 
+  body = { 
+  	"direct_messages": [
+  	{
     	"source_guid": "5257bdd049240135837b22000b9ea932",
     	"recipient_id": userId,
    		"text": message
+   	}]
   };
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
         //neat
       }
-      if(res.statusCode == "400") {
-      	console.log("error? : " + res.StatusCode);
-      	 console.log("error? ALSKJDF: " + res.data);
-      	 console.log('rejecting bad status code ' + res.statusCode);
-        console.log('MESSAGE: ' + (res.statusMessage));
-        console.log("MAYBEE??: " + res.getHeaders());
-
-      }
+    
       else{
         console.log('rejecting bad status code ' + res.statusCode);
         console.log('MESSAGE: ' + (res.statusMessage));
