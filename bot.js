@@ -154,12 +154,10 @@ function sendDirectMessage(userId, message) {
     method: 'POST'
   };
 
-  body = { 
-  	"direct_message": {
+  	body = { 
     	"source_guid": "5257bdd049240135837b22000b9ea932",
     	"recipient_id": userId,
    		"text": message
-  	}
   };
 
   botReq = HTTPS.request(options, function(res) {
@@ -168,7 +166,6 @@ function sendDirectMessage(userId, message) {
       }
       if(res.statusCode == "400") {
       	console.log("error? : " + res.errors);
-      	console.log("maybe this will work: " + JSON.stringify(meta.errors));
       }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
