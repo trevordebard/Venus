@@ -154,20 +154,26 @@ function sendDirectMessage(userId, message) {
     method: 'POST'
   };
 
-  body = { "direct_message": {
-    "source_guid": "5257bdd049240135837b22000b9ea932",
-    "recipient_id": userId,
-    "text": message
-  }
+  body = { 
+  	"direct_message": {
+    	"source_guid": "5257bdd049240135837b22000b9ea932",
+    	"recipient_id": userId,
+   		"text": message
+  	}
   };
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
         //neat
       }
+      if(res.statusCode == "400") {
+      	console.log("error? : " + res.errors);
+      	console.log("error? : " + res.meta.errors);
+      	console.log("maybe this will work: " + JSON.stringify(meta.errors));
+      }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
-        console.log('MESSAGE: ' + JSON.stringify(res.statusMessage));
+        console.log('MESSAGE: ' + (res.statusMessage));
 
       }
   });
