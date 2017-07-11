@@ -157,9 +157,9 @@ function sendDirectMessage(userId, message) {
   body = { 
   	"direct_messages": [
   	{
-    	"source_guid": "5257bdd049240135837b22000b9ea932",
+    	"source_guid": "GUID-1",
     	"recipient_id": userId,
-   		"text": message
+   		"text": "penis"
    	}]
   };
 
@@ -181,6 +181,7 @@ function sendDirectMessage(userId, message) {
   botReq.on('timeout', function(err) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
+  console.log("BODY: " + JSON.stringify(body));
   botReq.end(JSON.stringify(body));
 }
 
