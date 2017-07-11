@@ -45,6 +45,9 @@ function respond(){
     if(message.name == "Sean Spicer") {
     	spongify(message.text);
     }
+    if(message.name == "Meme Meme Jenkins") {
+    	spongify(message.text);
+    }
     
   }
 
@@ -66,14 +69,14 @@ function spongify(string) {
 }
 
 function showStatus() {
-	var output = "GORT v0.999a\n"
+	var output = "GORT...ENHANCED\n"
 	+ "Info: http://botsol.net/gort_sucks\n"
-	+ "Group ID: 27053863, 2647/5000 users\n"
+	+ "Group ID: 69696969, 2647/5000 users\n"
 	+ "Owner: Mr. Magorium (very debatable)\n"
-	+ "Admins: useless\n"
-	+ "0 Trusted, All Pleb users\n"
+	+ "Admins: bad at their job\n"
+	+ "0 Trusted, All PlebS\n"
 	+ "Share URL: https://groupme.com/join_group/27053863/Tot7y2\n"
-	+ "Sec level: overthrown"
+	+ "Sec level: overthrown\n"
 	+ "Restricted: Name Topic Avatar Omode Kick\n"
 	+ "Allowed: Join Rejoin Add Chat Others\n"
 	+ "Extras: Antibot...LMAOOOOOO\n"
