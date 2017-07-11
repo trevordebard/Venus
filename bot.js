@@ -168,7 +168,6 @@ function sendDirectMessage(userId, message) {
       }
       if(res.statusCode == "400") {
       	console.log("error? : " + res.errors);
-      	console.log("error? : " + res.meta.errors);
       	console.log("maybe this will work: " + JSON.stringify(meta.errors));
       }
       else{
