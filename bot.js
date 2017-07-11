@@ -18,9 +18,6 @@ function respond(){
   	if(message.user_id!="402936"){//This is the bot id
     this.res.writeHead(200);
     
-    if(message.text=="Ace, analyze the group."){
-        analyzeGroup();
-    }
     if(message.text=="simple") {
     	postMessage("it worked");
     }
@@ -40,10 +37,6 @@ function respond(){
 }
 
 
-function introduction(){
-  var response = "Hi, I'm the analytical chat engine, or ACE.\nI don't have very much functionality at the moment, but I can give very basic stats about this group.";
-  postMessage(response);
-}
 
 function getGroupData(outputBool){
   var tempGroupData;
