@@ -175,14 +175,9 @@ function sendDirectMessage(userId, message) {
       }
   });
 
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
   console.log("BODY: " + JSON.stringify(body));
   botReq.end(JSON.stringify(body));
+  console.log(botReq);
 }
 
 function postMessage(botResponse) {
