@@ -165,7 +165,7 @@ function sendDirectMessage(userId, message) {
         //neat
       }
       if(res.statusCode == "400") {
-      	console.log("error? : " + res.errors);
+      	console.log("error? : " + res.error);
       }
       else{
         console.log('rejecting bad status code ' + res.statusCode);
