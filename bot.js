@@ -33,6 +33,9 @@ function respond(){
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
+    else if(message.text.substring(0,13).toLowerCase() == "gort ban gort") {
+    	postMessage("Try it again, you aLoMoSt HaD iT");
+    }
     else if(message.text.toLowerCase() == "gort status") {
     	showStatus();
     }
