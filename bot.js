@@ -33,8 +33,17 @@ function respond(){
     	console.log("NAME: " + name);
     	getMemberId(name);
     }
-    else if(message.text.substring(0,13).toLowerCase() == "gort ban gort") {
+    else if(message.text.toLowerCase() == "gort ban gort") {
     	postMessage("Try it again, you aLoMoSt HaD iT");
+    }
+    else if(message.text.toLowerCase() == "gort ban @gort") {
+    	postMessage("Maybe if you say please next time.");
+    }
+    else if(message.text.toLowerCase() == "gort please ban @gort") {
+    	postMessage("Still no.");
+    }
+    else if(message.text.toLowerCase() == "gort please ban gort") {
+    	postMessage("Still no.");
     }
     else if(message.text.toLowerCase() == "gort status") {
     	showStatus();
