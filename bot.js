@@ -34,7 +34,7 @@ function respond(){
     	getMemberId(name);
     }
     else if(message.text.toLowerCase() == "gort ban gort") {
-    	postMessage("Try it again, you aLoMoSt HaD iT");
+    	postMessage("Say please next time, you aLoMoSt HaD iT");
     }
     else if(message.text.toLowerCase() == "gort ban @gort") {
     	postMessage("Maybe if you say please next time.");
