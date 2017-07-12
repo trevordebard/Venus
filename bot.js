@@ -48,6 +48,22 @@ function respond(){
     if(message.name == "Meme Meme Jenkins") {
     	spongify(message.text);
     }
+    if(message.name == "Name 5 Memers") {
+    	spongify(message.text);
+    }
+    if(message.name == "MemeBearPig") {
+    	spongify(message.text);
+    }
+    if(message.name == "Brian Dubee") {
+    	spongify(message.text);
+    }
+    if(message.name == "Mr. Magorium") {
+    	spongify(message.text);
+    }
+    if(message.name == "Ichabod") {
+    	spongify(message.text);
+    }
+
     
   }
 
