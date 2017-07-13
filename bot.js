@@ -34,10 +34,10 @@ function respond(){
     	getMemberId(name);
     }
     else if(message.text.toLowerCase() == "gort ban gort") {
-    	postMessage("Say please next time, you aLoMoSt HaD iT");
+    	postMessage("Ban gort machine broke\nAdmins being useless machine fully operational.");
     }
     else if(message.text.toLowerCase() == "gort ban @gort") {
-    	postMessage("Maybe if you say please next time.");
+    	postMessage("Ban gort machine broke.\nAdmins being useless machine fully operational.");
     }
     else if(message.text.toLowerCase() == "gort please ban @gort") {
     	postMessage("Still no.");
@@ -48,40 +48,88 @@ function respond(){
     else if(message.text.toLowerCase() == "gort status") {
     	showStatus();
     }
-    if(message.name == "Memeville") {
-    	spongify(message.text);
-    }
-    if(message.name == 'Mantequilla "Last of the Memecans"') {
-    	spongify(message.text);
-    }
-    if(message.name == "Sean Spicer") {
-    	spongify(message.text);
-    }
-    if(message.name == "Meme Meme Jenkins") {
-    	spongify(message.text);
-    }
-    if(message.name == "Name 5 Memers") {
-    	spongify(message.text);
-    }
-    if(message.name == "MemeBearPig") {
-    	spongify(message.text);
-    }
-    if(message.name == "Brian Dubee") {
-    	spongify(message.text);
-    }
-    if(message.name == "Mr. Magorium") {
-    	spongify(message.text);
-    }
-    if(message.name == "Ichabod") {
-    	spongify(message.text);
-    }
-
     
+    if(message.name == "Memeville") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == 'Mantequilla "Last of the Memecans"') {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "Sean Spicer") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "Meme Meme Jenkins") {
+    	if(message.text.toLowerCase().substring(0,4) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "Name 5 Memers") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "MemeBearPig") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "Brian Dubee") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
+    else if(message.name == "Mr. Magorium") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    else if(message.name == "Ichabod") {
+    	if(message.text.toLowerCase().substring(0,5) == "gort") {
+    		punishment();
+    	}
+    	else {
+    		spongify(message.text);
+    	}
+    }
   }
 
   this.res.end();
 }
 
+function punish() {
+	for(var i = 0; i < 14; i++) {
+		postMessage("This is your punishment for using me as your servant."
+	}
+}
 
 function spongify(string) {
 	var output = "";
@@ -216,6 +264,8 @@ function postMessage(botResponse) {
       }
 
   });
+  
+  
 
   botReq.on('error', function(err) {
     console.log('error posting message '  + JSON.stringify(err));
