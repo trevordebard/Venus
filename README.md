@@ -1,4 +1,4 @@
-#Venus Bot
+## Venus Bot
 
 Venus is a GroupMe bot that is designed to take advantage of a flaw in the way GroupMe handles the addition of new bots being added to chats. 
 
