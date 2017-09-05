@@ -50,86 +50,36 @@ function respond(){
     }
     
     if(message.name == "Memeville") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == 'Mantequilla "Last of the Memecans"') {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "Sean Spicer") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "Meme Meme Jenkins") {
-    	if(message.text.toLowerCase().substring(0,4) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "Name 5 Memers") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "MemeBearPig") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "Brian Dubee") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
     else if(message.name == "Mr. Magorium") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
+    }
     else if(message.name == "Ichabod") {
-    	if(message.text.toLowerCase().substring(0,5) == "gort") {
-    		punishment();
-    	}
-    	else {
-    		spongify(message.text);
-    	}
+    	spongify(message.text);
     }
   }
-
   this.res.end();
 }
 
-function punish() {
-	for(var i = 0; i < 14; i++) {
-		postMessage("This is your punishment for using me as your servant."
-	}
-}
 
 function spongify(string) {
 	var output = "";
@@ -214,8 +164,6 @@ function getMemberId(name) {
   });
 }
 
-
-
 function interpretGroupJSON(group){
   console.log("group: " + group);
   group = group.response;
@@ -236,7 +184,6 @@ function interpretGroupJSON(group){
   }
   return output;
 }
-
 
 function postMessage(botResponse) {
   var options, body, botReq;
